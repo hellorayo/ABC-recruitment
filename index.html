@@ -9,29 +9,31 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; image-rendering: pixelated; }
 
-  /* ── Stardew Valley palette ── */
+  /* ── Stardew palette — purples, browns, reds, golds only ── */
   :root {
-    --parchment:  #f5ead2;
-    --parchment2: #eedfc0;
-    --cream:      #fdf6e3;
-    --brown-dark: #3b1f0e;
-    --brown-mid:  #7a4a28;
-    --brown-light:#b07840;
-    --sage:       #7aaa6a;
-    --sage-dark:  #4a7a3a;
-    --terracotta: #c05a38;
-    --rust:       #a03820;
-    --gold:       #e8b840;
-    --gold-light: #f4d070;
-    --teal:       #4a9090;
-    --teal-light: #6ab8b0;
-    --dusk:       #8878c0;
-    --sky:        #a0c8e8;
-    --shadow:     rgba(59,31,14,0.18);
+    --parchment:       #f2e8cc;
+    --parchment2:      #e8d8b0;
+    --cream:           #faf3e0;
+    --brown-dark:      #2c1a0e;
+    --brown-mid:       #6b3d1e;
+    --brown-light:     #9e6030;
+    --terracotta:      #b84030;
+    --rust:            #8c2c1c;
+    --gold:            #e8a820;
+    --gold-light:      #f4c84a;
+    --night:           #1c1430;
+    --dusk:            #4a3878;
+    --amethyst:        #9878c8;
+    --amethyst-light:  #c0a0e0;
+    --stone-dark:      #3a3040;
+    --stone:           #6a5c70;
+    --stone-light:     #9a8ca0;
   }
 
+  
+
   html, body {
-    background: var(--brown-dark);
+    background: var(--night);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -49,25 +51,6 @@
     position: relative;
     overflow: hidden;
     box-shadow: 10px 10px 0 var(--brown-dark);
-  }
-
-  /* Pixel checkerboard borders */
-  .pixel-border {
-    height: 18px;
-  }
-  .pixel-border-top {
-    background: repeating-linear-gradient(
-      90deg,
-      var(--terracotta) 0px, var(--terracotta) 18px,
-      var(--gold)       18px, var(--gold) 36px
-    );
-  }
-  .pixel-border-bottom {
-    background: repeating-linear-gradient(
-      90deg,
-      var(--teal)       0px, var(--teal) 18px,
-      var(--terracotta) 18px, var(--terracotta) 36px
-    );
   }
 
   /* Subtle scanline overlay */
@@ -113,7 +96,7 @@
     height: clamp(64px, 16vw, 84px);
     border: 3px solid var(--brown-dark);
     overflow: hidden;
-    background: linear-gradient(135deg, #e8644a, #4ab8c8);
+    background: linear-gradient(135deg, var(--dusk), var(--brown-mid));
     box-shadow: 4px 4px 0 var(--brown-dark);
   }
   .logo-box img { width: 100%; height: 100%; object-fit: cover; }
@@ -199,7 +182,7 @@
   .role-card.selected {
     transform: translate(5px, 5px);
     border-color: var(--gold-light);
-    background: #1a0e04;
+    background: var(--night);
   }
   .role-card.selected::after {
     bottom: 0; right: 0;
@@ -235,7 +218,7 @@
   }
   @keyframes card-flash {
     0%,100% { background: var(--brown-dark); }
-    50%     { background: #3a2010; }
+    50%     { background: var(--dusk); }
   }
   .role-icon { font-size: clamp(12px, 3.5vw, 15px); display: block; margin-bottom: 5px; }
   .role-name {
@@ -244,12 +227,12 @@
     font-size: clamp(5.5px, 1.7vw, 7px);
     line-height: 1.7;
   }
-  .role-desc { color: #9a8060; font-size: clamp(5px, 1.5vw, 6px); line-height: 2; }
+  .role-desc { color: var(--stone-light); font-size: clamp(5px, 1.5vw, 6px); line-height: 2; }
 
   /* ── STATS BOX ── */
   .stats-box {
-    background: var(--brown-dark);
-    border: 3px solid var(--teal-light);
+    background: var(--night);
+    border: 3px solid var(--amethyst);
     padding: clamp(12px, 3.5vw, 15px);
     margin-bottom: 18px;
     position: relative;
@@ -258,8 +241,8 @@
     content: 'OFFICER STATS';
     position: absolute;
     top: -10px; left: 10px;
-    background: var(--teal-light);
-    color: var(--brown-dark);
+    background: var(--amethyst);
+    color: var(--cream);
     font-size: clamp(5.5px, 1.8vw, 7px);
     padding: 2px 7px;
   }
@@ -273,17 +256,17 @@
   }
   .stat-label {
     width: clamp(90px, 25vw, 120px);
-    color: #7a6a50;
+    color: var(--stone-light);
     font-size: clamp(5px, 1.5vw, 6px);
     flex-shrink: 0;
   }
   .stat-bar {
     flex: 1; height: 10px;
-    background: #2a1608; overflow: hidden;
+    background: var(--stone-dark); overflow: hidden;
   }
   .stat-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    background: linear-gradient(90deg, var(--amethyst), var(--amethyst-light));
     animation: fill-in 1.6s ease-out forwards;
     width: 0%;
   }
@@ -333,13 +316,14 @@
 
   /* ── FOOTER ── */
   .footer-bar {
-    background: var(--brown-dark);
-    color: var(--teal-light);
+    background: var(--night);
+    color: var(--gold-light);
     font-size: clamp(4.5px, 1.4vw, 6px);
     padding: 10px 14px;
     text-align: center;
     line-height: 2.2;
     letter-spacing: 0.5px;
+    border-top: 3px solid var(--dusk);
   }
 
   /* ── TWINKLING STARS ── */
@@ -350,30 +334,30 @@
   .star {
     position: absolute;
     width: 4px; height: 4px;
-    background: var(--gold);
+    background: var(--gold-light);
     animation: twinkle 1.5s step-end infinite;
   }
   @keyframes twinkle { 0%,100%{opacity:1} 50%{opacity:0} }
 
-  /* ── DECORATIVE CORNER WHEAT SPRITES ── */
+  /* ── DECORATIVE STRIP — gold/purple pixel dots ── */
   .deco-strip {
     height: 8px;
     background: repeating-linear-gradient(
       90deg,
-      var(--sage-dark) 0, var(--sage-dark) 4px,
-      var(--sage)      4px, var(--sage) 8px,
-      var(--gold)      8px, var(--gold) 12px,
-      var(--sage)      12px, var(--sage) 16px
+      var(--dusk)       0,  var(--dusk)       4px,
+      var(--amethyst)   4px, var(--amethyst)   8px,
+      var(--gold)       8px, var(--gold)       12px,
+      var(--terracotta) 12px, var(--terracotta) 16px
     );
     margin: 10px 0 0;
     border-top: 2px solid var(--brown-dark);
     border-bottom: 2px solid var(--brown-dark);
   }
 
-  /* glow pulse on poster */
+  /* glow pulse — Stardew amethyst lantern */
   @keyframes glow {
     0%,100%{ box-shadow: 10px 10px 0 var(--brown-dark); }
-    50%{ box-shadow: 10px 10px 0 var(--brown-dark), 0 0 24px rgba(232,184,64,0.18); }
+    50%{ box-shadow: 10px 10px 0 var(--brown-dark), 0 0 28px rgba(152,120,200,0.25); }
   }
   .poster { animation: glow 4s ease-in-out infinite; }
 
@@ -382,7 +366,7 @@
 <body>
 
 <div class="poster">
-  <div class="pixel-border pixel-border-top"></div>
+
 
   <div class="inner">
 
@@ -486,7 +470,7 @@
     QUESTROM SCHOOL OF BUSINESS @ BOSTON UNIVERSITY
   </div>
 
-  <div class="pixel-border pixel-border-bottom"></div>
+
 </div>
 
 </body>
